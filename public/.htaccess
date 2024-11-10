@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+RewriteEngine On
+# Exclude directories from rewrite rules
+RewriteRule ^(css|i|js|storages|assets) - [L]
+# обмежуємо доступ до фізичних файлів
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# перенаправляємо всі запити на index.php.
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
