@@ -1,5 +1,9 @@
 <?php
 
+require_once dirname(__DIR__, 1) . '/app/Core/DotEnv.php';
+
+(new DotEnv(dirname(__DIR__, 1) . '/.env'))->load();
+
 function getEnvs()
 {
     return $_ENV;
@@ -39,6 +43,8 @@ function uri(): string
 {
     return $_SERVER['REQUEST_URI'];
 }
+
+
 
 $routes = require_once dirname(__DIR__, 1) . '/config/routes.php';
 $request = trim(uri(), '/');
